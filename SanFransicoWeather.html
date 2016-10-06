@@ -1,0 +1,35 @@
+<html>
+<head>
+	<title>San Fransico Weather</title>
+</head>
+<h2>San Fransisco Weather</h2>
+<body>
+	<div id=windSpeed>Wind Speed: </div>
+	<div id=humidity>Humidity: </div>
+	<div id=temperature>Temperature: </div>
+	<div id=description>Description: </div>
+<script src='http://code.jquery.com/jquery-2.1.3.min.js'></script>
+<script type="text/javascript">
+	var city = 'San Fransico';
+	var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=SanFransisco&units=imperial&appid=75df137caf4eca930d5e556924af9c1b";
+
+	$.ajax({url: queryURL, method: 'GET'}).done(function(data) {
+	     console.log(data);
+
+	     console.log(data.wind.speed);
+	     $('#windSpeed').append(data.wind.speed);
+
+	     console.log(data.main.humidity);
+	     $('#humidity').append(data.main.humidity);
+
+	     console.log(data.main.temp);
+	     $('#temperature').append(data.main.temp);
+	     console.log(data.weather.main);
+	     $('#description').append(data.weather[0].description);
+	}); 
+
+</script>
+
+
+</body>
+</html>
